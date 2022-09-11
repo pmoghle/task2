@@ -21,7 +21,7 @@ pipeline {
     stage('Deploy Image in to nexus registry') {
       steps{
         script {
-           sh 'docker tag flask-app 3.110.86.199:8081/repository/docker-group/flask-app'
+           sh 'sudo docker tag flask-app 3.110.86.199:8081/repository/docker-group/flask-app'
            sh 'docker login -u admin -p pooja http://3.110.86.199:8081/repository/docker-group/'
            sh 'docker push  http://3.110.86.199:8081/repository/docker-group/flask-app'
            sh 'docker logout http://3.110.86.199:8081/repository/docker-group/'
