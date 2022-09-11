@@ -22,7 +22,7 @@ pipeline {
       steps{
         script {
            sh 'curl -sSf -u "admin:pooja" -X PUT 'http://3.110.86.199:8081/repository/docker-group/flask-app.tar' -T flask-app.tar'
-	 }
+	    }
           }
         }
       }
