@@ -21,10 +21,10 @@ pipeline {
     stage('Deploy Image in to nexus registry') {
       steps{
         script {
-           sh 'docker tag flask:1.0 18.212.25.74:8081/repository/k8s-task/flask:1.0'
-           sh 'docker login -u ravali1505 -p Manoj@123@123 http://18.212.25.74:8081/repository/k8s-task/'
-           sh 'docker push 18.212.25.74:8081/repository/k8s-task/flask:1.0'
-           sh 'docker logout http://18.212.25.74:8081/repository/k8s-task/'
+           sh 'docker tag flask-app 3.110.86.199:8081/repository/docker-group/flask-app'
+           sh 'docker login -u admin -p pooja http://3.110.86.199:8081/repository/docker-group/'
+           sh 'docker push  http://3.110.86.199:8081/repository/docker-group/flask-app'
+           sh 'docker logout http://3.110.86.199:8081/repository/docker-group/'
             }
           }
         }
