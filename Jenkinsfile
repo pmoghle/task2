@@ -13,7 +13,7 @@ pipeline {
    stage('Building image') {
       steps{
         script {
-          sh 'sudo docker build -t flask-app:1.0 -f ./Dockerfile.txt .' 
+          sh 'sudo docker build -t flask-app:2.0 -f ./Dockerfile.txt .' 
 
         }
        }
@@ -21,9 +21,9 @@ pipeline {
     stage('Deploy Image in to nexus registry') {
       steps{
         script {
-	  sh 'sudo docker tag flask-app 3.110.86.199:8083/repository/docker-group/flask-app:1.0'
+	  sh 'sudo docker tag flask-app 3.110.86.199:8083/repository/docker-group/flask-app:2.0'
 	  sh 'sudo docker login -u admin -p pooja 3.110.86.199:8083/repository/docker-group/' 
-          sh 'sudo docker push 3.110.86.199:8083/repository/docker-group/flask-app:1.0'
+          sh 'sudo docker push 3.110.86.199:8083/repository/docker-group/flask-app:2.0'
           sh 'sudo docker logout 3.110.86.199:8083/repository/docker-group/'
           // sh 'curl -XGET "admin:pooja" -X PUT http://3.110.86.199:8081/repository/python/flask-app '
 	    }
