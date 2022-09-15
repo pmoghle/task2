@@ -35,7 +35,9 @@ pipeline {
       steps{
 	  script {
 	      sh  'withSonarQubeEnv()installationName: 'pmoghle', credentialsId: 'SonarQubeToken' '
-           sh 'mvn clean package sonar:sonar' 
+        //   sh 'mvn clean package sonar:sonar' 
+	     sh "${scannerHome}/bin/sonar-scanner"
+
 	      }
             }
           }
