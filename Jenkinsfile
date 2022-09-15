@@ -32,7 +32,6 @@ pipeline {
       }
     }
  stage('scan and build Jar file') {
-      steps{
 	  script {
 	       withSonarQubeEnv()
         //   sh 'mvn clean package sonar:sonar' 
@@ -42,6 +41,6 @@ pipeline {
 
 	      }
             }
-          }
+          
 
         
