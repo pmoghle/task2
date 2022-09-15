@@ -31,5 +31,14 @@ pipeline {
         }
       }
     }
+ stage('scan and build Jar file') {
+      steps{
+        script {
+		withSonarQubeEnv()installationName: 'pmoghle', credentialsId: 'SonarQubeToken'
+          sh 'mvn clean package sonar:sonar' 
+
+        }
+       }
+	  }
 
         
