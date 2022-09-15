@@ -31,16 +31,27 @@ pipeline {
         }
       }
     }
- stage('scan and build Jar file') {
-	  script {
-	       withSonarQubeEnv('SonarQube Scanner')
-        //   sh 'mvn clean package sonar:sonar' 
-	     //sh "${scannerHome}/bin/sonar-scanner"
-		sh "${scannerHome}/bin/sonar-scanner"
+//  stage('scan and build Jar file') {
+// 	  script {
+// 	       withSonarQubeEnv('SonarQube Scanner')
+//         //   sh 'mvn clean package sonar:sonar' 
+// 	     //sh "${scannerHome}/bin/sonar-scanner"
+// 		sh "${scannerHome}/bin/sonar-scanner"
 
 
-	      }
-            }
+// 	      }
+//             }
+stage('SonarQube analysis') {
+      steps {
+        script {
+          // requires SonarQube Scanner 2.8+
+          scannerHome = tool 'SonarQube Scanner 2.8'
+        }
+        withSonarQubeEnv('SonarQube Scanner') {
+          sh "${scannerHome}/bin/sonar-scanner"
+        }
+      }
+    }
           
           
 
